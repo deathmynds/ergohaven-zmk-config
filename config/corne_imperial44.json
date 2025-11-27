@@ -52,21 +52,5 @@
           { "row": 3, "col": 10, "x":   10, "y":  3.45, "r": -20 }
         ]
       }
-    },
-    "sensors": [
-      {
-        "ref": "encoder_L1",
-        "name": "encoder_L1",
-        "identifier": "encoder_L1",
-        "compatible": "alps,ec11",
-        "label": "ENCODER_L1"
-      },
-      {
-        "ref": "encoder_R1",
-        "name": "encoder_R1",
-        "identifier": "encoder_R1",
-        "compatible": "alps,ec11",
-        "label": "ENCODER_R1"
-      }
-    ]
+    }
   }
