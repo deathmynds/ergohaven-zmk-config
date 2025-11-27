@@ -1,0 +1,11 @@
+# ZMK & West Build Artifacts
+/build/
+*.uf2
+*.bin
+*.hex
+
+# macOS system files
+.DS_Store
+
+# JetBrains IDE files
+.idea/
