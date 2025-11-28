@@ -131,30 +131,30 @@ include:
     shield: imperial44_left_qube
 
   - board: ergohaven
-    shield: corne_imperial44_left
+    shield: corne_left
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: ergohaven
-    shield: corne_imperial44_left
-    keymap: corne_imperial44_ruen
+    shield: corne_left
+    keymap: corne_ruen
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: corne_imperial44_left_ruen-ergohaven-zmk
+    artifact-name: corne_left_ruen-ergohaven-zmk
   - board: ergohaven
-    shield: corne_imperial44_right
+    shield: corne_right
   - board: ergohaven
-    shield: corne_imperial44_qube qube dongle_screen
+    shield: corne_qube qube dongle_screen
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: corne_imperial44_qube-ergohaven-zmk
+    artifact-name: corne_qube-ergohaven-zmk
   - board: ergohaven
-    shield: corne_imperial44_qube qube dongle_screen
-    keymap: corne_imperial44_ruen
+    shield: corne_qube qube dongle_screen
+    keymap: corne_ruen
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: corne_imperial44_qube_ruen-ergohaven-zmk
+    artifact-name: corne_qube_ruen-ergohaven-zmk
   - board: ergohaven
-    shield: corne_imperial44_left_qube
+    shield: corne_left_qube
 
   - board: ergohaven
     shield: trackball
