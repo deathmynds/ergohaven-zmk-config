@@ -77,15 +77,42 @@
         };
     };
 
+    behaviors {
+        LAlt_SLAlt: LAlt_SLAlt {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LALT_SLALT";
+            #binding-cells = <0>;
+            bindings = <&kp LALT>, <&kp LS(LALT)>;
+        };
+
+        ru_soft_hard_sign: ru_soft_hard_sign {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RU_SOFT_HARD_SIGN";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
+
+        mo_kp: mo_kp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MO_KP";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         en {
             bindings = <
-&kp ESC    &kp Q  &kp W  &kp E  &kp R      &kp T                          &kp Y  &kp U      &kp I      &kp O    &kp P     &kp BSLH
-&kp TAB    &kp A  &kp S  &kp D  &kp F      &kp G                          &kp H  &kp J      &kp K      &kp L    &kp SEMI  &kp LGUI
-&kp LSHFT  &kp Z  &kp X  &kp C  &kp V      &kp B                          &kp N  &kp M      &kp COMMA  &kp DOT  &kp SQT   &kp RSHFT
-                                &kp LCTRL  &mo 2  &kp SPACE    &kp ENTER  &mo 3  &kp RCTRL
+&kp ESC      &kp Q  &kp W  &kp E  &kp R      &kp T                               &kp Y       &kp U          &kp I      &kp O    &kp P     &kp LEFT_BRACE
+&LAlt_SLAlt  &kp A  &kp S  &kp D  &kp F      &kp G                               &kp H       &kp J          &kp K      &kp L    &kp SEMI  &kp DQT
+&kp LGUI     &kp Z  &kp X  &kp C  &kp V      &kp B                               &kp N       &kp M          &kp COMMA  &kp DOT  &kp SQT   &kp TAB
+                                  &kp LCTRL  &kp SPACE  &mo 2    &mo_kp 3 ENTER  &kp LSHIFT  &kp BACKSPACE
             >;
 
             display-name = "Base";
@@ -94,10 +121,10 @@
         ru {
             display-name = "Ru";
             bindings = <
-&kp ESC    &kp RU_CYRILLIC_SHORT_I  &kp RU_CYRILLIC_TSE   &kp RU_CYRILLIC_U   &kp RU_CYRILLIC_KA  &kp RU_CYRILLIC_IE                                                   &kp RU_CYRILLIC_EN  &kp RU_CYRILLIC_GHE        &kp RU_CYRILLIC_SHA  &kp RU_CYRILLIC_SHCHA  &kp RU_CYRILLIC_ZE   &kp BSLH
-&kp TAB    &kp RU_CYRILLIC_EF       &kp RU_CYRILLIC_YERU  &kp RU_CYRILLIC_VE  &kp RU_CYRILLIC_A   &kp RU_CYRILLIC_PE                                                   &kp RU_CYRILLIC_ER  &kp RU_CYRILLIC_O          &kp RU_CYRILLIC_EL   &kp RU_CYRILLIC_DE     &kp RU_CYRILLIC_ZHE  &kp LGUI
-&kp LSHFT  &kp RU_CYRILLIC_YA       &kp RU_CYRILLIC_CHE   &kp RU_CYRILLIC_ES  &kp RU_CYRILLIC_EM  &kp RU_CYRILLIC_I                                     &kp RU_CYRILLIC_TE  &kp RU_CYRILLIC_SOFT_SIGN  &kp RU_CYRILLIC_BE   &kp RU_CYRILLIC_YU     &kp RU_CYRILLIC_E    &kp RSHFT
-                                                                              &kp LCTRL           &mo 2               &kp SPACE             &kp ENTER                  &mo 3               &kp RCTRL
+&kp ESC      &kp RU_CYRILLIC_SHORT_I  &kp RU_CYRILLIC_TSE   &kp RU_CYRILLIC_U   &kp RU_CYRILLIC_KA  &kp RU_CYRILLIC_IE                           &kp RU_CYRILLIC_EN  &kp RU_CYRILLIC_GHE                                                 &kp RU_CYRILLIC_SHA  &kp RU_CYRILLIC_SHCHA  &kp RU_CYRILLIC_ZE   &kp RU_CYRILLIC_HA
+&LAlt_SLAlt  &kp RU_CYRILLIC_EF       &kp RU_CYRILLIC_YERU  &kp RU_CYRILLIC_VE  &kp RU_CYRILLIC_A   &kp RU_CYRILLIC_PE                           &kp RU_CYRILLIC_ER  &kp RU_CYRILLIC_O                                                   &kp RU_CYRILLIC_EL   &kp RU_CYRILLIC_DE     &kp RU_CYRILLIC_ZHE  &kp RU_CYRILLIC_E
+&kp LGUI     &kp RU_CYRILLIC_YA       &kp RU_CYRILLIC_CHE   &kp RU_CYRILLIC_ES  &kp RU_CYRILLIC_EM  &kp RU_CYRILLIC_I                            &kp RU_CYRILLIC_TE  &ru_soft_hard_sign RU_CYRILLIC_HARD_SIGN LC(RU_CYRILLIC_SOFT_SIGN)  &kp RU_CYRILLIC_BE   &kp RU_CYRILLIC_YU     &kp RU_CYRILLIC_E    &kp TAB
+                                                                                &kp LCTRL           &kp SPACE           &mo 2    &mo_kp 4 ENTER  &kp LSHIFT          &kp BACKSPACE
             >;
         };
 
@@ -105,7 +132,7 @@
             bindings = <
 &trans  &trans  &kp HOME      &kp UP    &kp END        &kp INS                    &kp PG_UP        &kp N7  &kp N8  &kp N9  &trans  &trans
 &trans  &trans  &kp LEFT      &kp DOWN  &kp RIGHT      &kp RET                    &kp PG_DN        &kp N4  &kp N5  &kp N6  &trans  &trans
-&trans  &trans  &kp LC(LEFT)  &kp CAPS  &kp LC(RIGHT)  &kp DEL                &kp PRINTSCREEN  &kp N1  &kp N2  &kp N3  &trans  &trans
+&trans  &trans  &kp LC(LEFT)  &kp CAPS  &kp LC(RIGHT)  &kp DEL                    &kp PRINTSCREEN  &kp N1  &kp N2  &kp N3  &trans  &trans
                                         &trans         &trans   &trans    &trans  &mo 5            &trans
             >;
 
@@ -116,7 +143,7 @@
             bindings = <
 &trans  &kp AT    &kp LT    &kp EQUAL  &kp GT    &kp GRAVE                    &trans     &kp LBKT  &kp UNDER  &kp RBKT  &trans    &trans
 &trans  &kp BSLH  &kp LPAR  &kp MINUS  &kp RPAR  &kp PLUS                     &kp PRCNT  &kp LBRC  &kp SEMI   &kp RBRC  &kp EXCL  &kp QUESTION
-&trans  &kp HASH  &kp STAR  &kp COLON  &kp FSLH  &trans                   &trans     &kp PIPE  &kp TILDE  &kp AMPS  &kp DOT   &trans
+&trans  &kp HASH  &kp STAR  &kp COLON  &kp FSLH  &trans                       &trans     &kp PIPE  &kp TILDE  &kp AMPS  &kp DOT   &trans
                                        &trans    &mo 5      &trans    &trans  &trans     &trans
             >;
 
@@ -128,7 +155,7 @@
             bindings = <
 &trans  &en AT_SIGN  &en LT        &kp EQUAL     &en GT       &en GRAVE                        &trans          &en LBKT  &kp UNDER    &en RBKT  &trans      &trans
 &trans  &kp RU_BSLH  &kp LPAR      &kp MINUS     &kp RPAR     &kp PLUS                         &kp RU_PERCENT  &en LBRC  &kp RU_SEMI  &kp RBRC  &kp EXCL    &kp RU_QUESTION
-&trans  &en HASH     &kp RU_ASTRK  &kp RU_COLON  &kp RU_FSLH  &kp RU_NUMERO                &trans          &en PIPE  &en TILDE    &en AMPS  &kp RU_DOT  &trans
+&trans  &en HASH     &kp RU_ASTRK  &kp RU_COLON  &kp RU_FSLH  &kp RU_NUMERO                    &trans          &en PIPE  &en TILDE    &en AMPS  &kp RU_DOT  &trans
                                                  &trans       &mo 5          &trans    &trans  &trans          &trans
             >;
         };
@@ -137,7 +164,7 @@
             bindings = <
 &bootloader  &trans  &kp F1  &kp F2   &kp F3   &kp F4                     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2      &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
 &trans       &trans  &kp F5  &kp F6   &kp F7   &kp F8                     &out OUT_BLE  &kp C_VOL_DN  &kp K_MUTE        &kp C_VOL_UP  &trans        &studio_unlock
-&trans       &trans  &kp F9  &kp F10  &kp F11  &kp F12                &out OUT_USB  &kp K_PREV    &kp K_PLAY_PAUSE  &kp K_NEXT    &trans        &trans
+&trans       &trans  &kp F9  &kp F10  &kp F11  &kp F12                    &out OUT_USB  &kp K_PREV    &kp K_PLAY_PAUSE  &kp K_NEXT    &trans        &trans
                                       &trans   &trans   &trans    &trans  &trans        &trans
             >;
 
