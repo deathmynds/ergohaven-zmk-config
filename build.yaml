@@ -2,13 +2,13 @@
 include:
 
   - board: ergohaven
-    shield: imperial44_left
-    keymap: imperial44_ruen
+    shield: corne_left
+    keymap: corne_ruen
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: imperial44_left_ruen-ergohaven-zmk
+    artifact-name: corne_left_ruen-ergohaven-zmk
   - board: ergohaven
-    shield: imperial44_right
+    shield: corne_right
 
   - board: ergohaven
     shield: settings_reset
